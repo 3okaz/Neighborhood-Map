@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang ="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="initial-scale=1">
+      <title>Neighborhood Map</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/style.css">
+      <script src="js/jQuery.js"></script>    
+      <script>
+         function googleSuccess() {
+                 if (google) {
+                     ko.applyBindings(new ViewModel());
+                 } else {
+          $('#map').append("<h2><p>Could not load Google Maps</p></h2>");
+         
+                 }
+             }
+      </script>     
+   </head>
+   <body>
+      <div class="container-fluid">
+         <div class ="row, text-center">
+            <div class="site-wrapper">
+               <div class="main">
+                  <div class="wrap">
+                     <section id="header">
+                        <div class="title">
+                           <h1>Neighborhood Map</h1>
+                        </div>
+                     </section>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            
+            <div class = "col-md-9">
+               <div id = "map"></div>
+            </div>
+            <div class ="col-md-3 title st" >
+               <h2 class = >Churches and mosques</h2>
+               <input id="pac-input" class="controls" placeholder="Search…" type="search" data-bind="textInput: Searchquery" >
+               <nav id="places">
+                  <ul data-bind="foreach: Visible">
+                     <ol>
+                        <a data-bind="text: title, click: listC" href="#"></a>
+                     </ol>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+         <script  src="js/knockout-3.4.1.js"></script>
+         <script  src="js/app.js"></script>
+         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3TZnkQ55ipfsjdBTE1uk-tygE_2GP55A&callback=googleSuccess" async defer onerror="googleError()"></script>
+      </div>
+      <footer>
+         <p>Posted by: Mohammed Abd-Elazez</p>
+      </footer>
+   </body>
+</html>
