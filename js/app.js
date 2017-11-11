@@ -256,15 +256,12 @@ function ViewModel() {
 
             self.Visible.push(marker);
             self.myMap.push(marker);
-            marker.addListener('click', function() {
-                if (marker.getAnimation() === null) {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                    setTimeout(function() {
-                        marker.setAnimation(null);
-                    }, 1500);
-                } else {
-                     marker.setAnimation(null);
-                }
+            marker.addListener('click', function () {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function () {
+            marker.setAnimation(null);
+            }, 1000);
+
                 infowindow.setContent(marker.content);
                 infowindow.open(map, marker);
             });
