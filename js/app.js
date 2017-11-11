@@ -1,5 +1,5 @@
 //Data Model
-var Churches_and_mosques = [{
+var churchesAndMosques = [{
         title: "Coptic Orthodox Church of Alexandria",
         lat: 31.1984027,
         lng: 29.8974113
@@ -222,7 +222,7 @@ function ViewModel() {
         });
         var infowindow = new google.maps.InfoWindow({});
 
-        Churches_and_mosques.forEach(function(Churche_and_mosque) {
+        churchesAndMosques.forEach(function(Churche_and_mosque) {
             //Ajax request wikipedia Api
             $.ajax({
                 url: 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=wikiCallBack&search=',
@@ -257,14 +257,13 @@ function ViewModel() {
             self.Visible.push(marker);
             self.myMap.push(marker);
             marker.addListener('click', function() {
-                if (marker.getAnimation() !== null) {
-                    marker.setAnimation(null);
-                } else {
+                if (marker.getAnimation() === null) {
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                     setTimeout(function() {
                         marker.setAnimation(null);
-                    }, 1000);
-
+                    }, 1500);
+                } else {
+                     marker.setAnimation(null);
                 }
                 infowindow.setContent(marker.content);
                 infowindow.open(map, marker);
